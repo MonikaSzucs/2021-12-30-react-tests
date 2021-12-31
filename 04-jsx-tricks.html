@@ -9,6 +9,12 @@
     const className = 'container'
     const props = {children, className}
     const element = <div {...props} />
+
+    // You can write props and className in curly braces
+    const element2 = <div className={className} children={children}/>
+    
+    // use babel to make ID then overwrite the className
+    const element3 = <div id="app-root" {...props} className="not-container"/>
     ReactDOM.render(element, rootElement)
   </script>
 </body>
