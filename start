@@ -1,0 +1,3 @@
+// copy this line below and run it in the terminal to run the files as localhost
+
+npx browser-sync start --server --files "./*.html" --no-open --no-notify --directory
