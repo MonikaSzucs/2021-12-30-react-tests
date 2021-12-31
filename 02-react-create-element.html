@@ -5,9 +5,40 @@
   <script type="text/javascript">
     const rootElement = document.getElementById('root')
     const element = React.createElement('div', {
+      // object
       className: 'container',
       children: 'Hello World',
     })
+
+    // Creating the array in console log props
+    const element2 = React.createElement('div', 
+      // object
+      {
+        className: 'container'
+      },
+      // children: 'Hello World'
+      // Shows up as an array in console.log
+      'Hello World',
+      ', Goodbye World',
+    )
+
+    //Creating our own array
+    const element3 = React.createElement('div', {
+      // object
+      className: 'container',
+      children: ['Hello World', ', Goodbye World'],
+    })
+
+    // You can create additional elements
+    const element4 = React.createElement('div', {
+      // object
+      className: 'container',
+      children: React.createElement('span', null, 'Hello', ' World'),
+    })
+    console.log(element)
+    console.log(element2)
+    console.log(element3)
+    console.log(element4)
     ReactDOM.render(element, rootElement)
   </script>
 </body>
