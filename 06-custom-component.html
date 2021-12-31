@@ -4,6 +4,8 @@
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
+
+    // Using a function
     function Message({children}) {
       return <div className="message">{children}</div>
     }
@@ -15,6 +17,53 @@
       </div>
     )
 
-    ReactDOM.render(element, document.getElementById('root'))
+    // Grab two messages
+    const element2 = (
+      <div className="container2">
+        {<div className="message2">Hello World</div>}
+        {<div className="message2">Hello World</div>}
+      </div>
+    )
+
+    // Grabbing two different message values
+    const message3 = props => <div className="message">{props.msg}</div>
+    const element3 = (
+      <div className="container">
+        {message3({msg: 'Hello World'})}
+        {message3({msg: 'Goodbye World'})}
+      </div>
+    )
+    
+    // using uppercase Message
+    const Message2 = props => <div className="message">{props.msg}</div>
+    const element4 = (
+      <div className="container">
+        <Message>Hello World</Message>
+        {Message2({msg: 'Hello World'})}
+        {Message2({msg: 'Goodbye World'})}
+      </div>
+    )
+    console.log(<Message>Hello World</Message>)
+
+    // only using the msg text which is self contained in <Message/>
+    const Message3 = props => <div className="message">{props.msg}</div>
+    const element5 = (
+      <div className="container">
+        <Message3 msg='Hello World'/>
+        <Message3 msg='Goodbye World'/>
+      </div>
+    )
+
+    // changing msg to children and putting it between <Message></Message>
+    const Message4 = props => <div className="message">{props.children}</div>
+    const element6 = (
+      <Message4>
+        Hello World
+        <Message>Goodbye World</Message>
+        <span>Hey There</span>
+      </Message4>
+    )
+
+    ReactDOM.render(element6, document.getElementById('root'))
   </script>
 </body>
