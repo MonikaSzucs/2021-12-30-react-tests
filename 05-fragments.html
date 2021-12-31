@@ -9,6 +9,26 @@
         <span>Hello</span> <span>World</span>
       </>
     )
-    ReactDOM.render(element, document.getElementById('root'))
+
+    // Use React.Fragment for multiple elements needed to be rendered
+    const helloElement = React.createElement('span', null, 'Hello')
+    const worldElement = React.createElement('span', null, 'World')
+    const element2 = React.createElement (
+      React.Fragment,
+      null,
+      helloElement,
+      ' ',
+      worldElement,
+    )
+
+    // React. Fragment with span directly embedded
+    // This might he helpful for tables with a specific structure to them
+    const element3 = (
+      <React.Fragment>
+        <span>Hello</span> <span>World</span>
+      </React.Fragment>
+    )
+
+    ReactDOM.render(element3, document.getElementById('root'))
   </script>
 </body>
