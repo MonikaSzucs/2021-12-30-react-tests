@@ -7,6 +7,7 @@
   <script type="text/babel">
     const rootElement = document.getElementById('root')
 
+    // Original Version
     function SayHello({firstName, lastName}) {
       return (
         <div>
@@ -14,13 +15,15 @@
         </div>
       )
     }
+    // or you can also install:
+    // babel-plugin-transform-react-remove-prop-types to remove the below code:
     SayHello.propTypes = {
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
     }
 
     const element = <SayHello firstName={false} />
-
+    
     ReactDOM.render(element, rootElement)
   </script>
 </body>
