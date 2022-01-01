@@ -5,12 +5,16 @@
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     function CharacterCount({text}) {
+      //JavaScript (JS)
       return (
+        // JSX has prop and children syntax
         <div>
-          {`The text "${text}" has `}
-          {text.length ? <strong>{text.length}</strong> : 'No'}
+          { /* JS - cannot do if statementes or for loops in here */`The text "${text}" has `}
+          {/* JSX starts outside the curly brace */}
+          { /* JS */text.length ? /*JSX*/ <strong>{text.length}</strong> : 'No'}
           {' characters'}
         </div>
+        // JS
       )
     }
 
@@ -18,6 +22,23 @@
       <>
         <CharacterCount text="Hello World" />
         <CharacterCount text="" />
+      </>
+    )
+
+    // Alterative way #2
+    function CharacterCount2({text}) {
+      const length = text.length ? text.length : 'No'
+      return (
+        <div>
+          {`The text "${text}" has `} <strong>{length}</strong> characters
+        </div>
+      )
+    }
+
+    const element2 = (
+      <>
+        <CharacterCount2 text="Hello World" />
+        <CharacterCount2 text="" />
       </>
     )
 
