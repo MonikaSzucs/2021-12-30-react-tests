@@ -26,6 +26,7 @@
   </style>
   <script type="text/babel">
     function Box({style, size, className = '', ...rest}) {
+      // if size class is specified then do the box--size or do empty string
       const sizeClassName = size ? `box--${size}` : ''
       return (
         <div
@@ -36,8 +37,26 @@
       )
     }
 
+    //or write
+    function Box2({style, size, className = '', ...rest}) {
+      // if size class is specified then do the box--size or do empty string
+      const sizeClassName = size ? `box--${size}` : ''
+      const props = {
+        className: `box ${className} ${sizeClassName}`,
+        style: {fontStyle: 'italic', ...style},
+        ...rest,
+      }
+      return (
+        <div {...props}/>
+      )
+    }
+
     const element = (
       <div>
+        {/*
+          Box component can now deal with implementation of creating the boxes.
+          Just need to follow the API the Box below creates for it  
+        */}
         <Box size="small" style={{backgroundColor: 'lightblue'}}>
           small lightblue box
         </Box>
@@ -51,6 +70,8 @@
       </div>
     )
 
+    // in the console.log click the first div with the box--small then type in the area below 
+    // $0.className
     ReactDOM.render(element, document.getElementById('root'))
   </script>
 </body>
