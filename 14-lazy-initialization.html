@@ -6,8 +6,20 @@
   <script type="text/babel">
     function Greeting() {
       const [name, setName] = React.useState(
+        //everytime you type in the input it rerenders the local storage so that console log runs. 
+        // you do not want it to always rerender
+        // if we are parsing a big json object this could be a problem
+        // the () makes sure it only renders on the initial load of the component
         () => window.localStorage.getItem('name') || '',
       )
+      
+      {/* 
+      const [name, setName] = React.useState(() => {
+        console.log('hello')
+        return window.localStorage.getItem('name') || ''
+      })
+      */}
+      console.log('rendered')
 
       React.useEffect(() => {
         window.localStorage.setItem('name', name)
