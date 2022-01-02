@@ -10,6 +10,7 @@
       )
 
       React.useEffect(() => {
+        console.log("Greeting useEffect")
         window.localStorage.setItem('name', name)
       }, [name])
 
