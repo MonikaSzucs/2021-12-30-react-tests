@@ -5,10 +5,14 @@
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     function Greeting() {
+      // save the input value in local storage (also called side effect) so when the user comes back the information is still saved
       const [name, setName] = React.useState(
         window.localStorage.getItem('name') || '',
       )
 
+      // Hook shown below
+      // You can see the local storage at console log Application > Storage > Local Storage > http://localhost:3000
+      // You will then see the name variable under the key and the item typed in under the Value column
       React.useEffect(() => {
         window.localStorage.setItem('name', name)
       })
