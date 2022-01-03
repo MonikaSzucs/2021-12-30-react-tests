@@ -45,8 +45,14 @@
   <script type="text/babel">
     function Tilt({children}) {
       const tiltRef = React.useRef()
+      // You wont see anything in the console log because by the time the function runs the react has not created the DOM node.
+      console.log(tiltRef.current)
 
       React.useEffect(() => {
+        // You will now see something in the console log
+        // You will see the DOM node
+        console.log(tiltRef.current)
+        // we need to use current so we can mutate the current property without triggering a rerender for the component
         const tiltNode = tiltRef.current
         const vanillaTiltOptions = {
           max: 25,
@@ -55,12 +61,17 @@
           'max-glare': 0.5,
         }
         VanillaTilt.init(tiltNode, vanillaTiltOptions)
+        // if you want to avoid memory leaks you need to do the return as shown below
         return () => {
+          // remove all references of the DOM node
           tiltNode.vanillaTilt.destroy()
         }
       }, [])
-
+      // we can add a dependancy. We can give it a either or if its showing or not using []) at hte end.
       return (
+        // this is a react 
+        // use a ref prop. We need to pass a ref which is a object that has a mutable current property
+        // the ref prop gives you access to the DOM nodes
         <div ref={tiltRef} className="tilt-root">
           <div className="tilt-child">{children}</div>
         </div>
