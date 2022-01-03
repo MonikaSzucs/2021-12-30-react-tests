@@ -10,9 +10,12 @@
       )
 
       React.useEffect(() => {
+        // initial use render
         console.log("Greeting useEffect")
         window.localStorage.setItem('name', name)
       }, [name])
+      // Above: you need to put the text name in the [] in order to save it in memory if you do not then it will not save what you wrote perviously when you refresh the page.
+      // You can look for eslint-plugin-react-hooks use to enmsure dependacy array up to date autoatically for you
 
       const handleChange = event => setName(event.target.value)
 
