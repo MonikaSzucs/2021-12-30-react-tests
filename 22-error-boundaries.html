@@ -14,6 +14,7 @@
     //   render() {
     //     const {error} = this.state
     //     if (error) {
+          // if there are dots in the component as below this.props etc it is treated as a custom component
     //       return <this.props.FallbackComponent error={error} />
     //     }
 
@@ -21,6 +22,7 @@
     //   }
     // }
 
+    // Error boundaries have to be class components
     function ErrorFallback({error}) {
       return (
         <div>
@@ -42,9 +44,18 @@
             <button onClick={() => setExplode(true)}>💣</button>
           </div>
           <div>
+            {/* You can also make the ErrorBoundary cover this entire area and if you do then everything will be covered 
+                You can also have an ErrorBoundary within a ErrorBoundary so whever the error is in that first outer container will run that error
+                it will only handle errors that happen in a react call stack
+                */}
             <ErrorBoundary FallbackComponent={ErrorFallback}>
               {explode ? <Bomb /> : 'Push the button Max!'}
             </ErrorBoundary>
+            {/* 
+              <ErrorBoundary>
+                {explode ? <Bomb /> : 'Push the button Max!'}
+              </ErrorBoundary>
+            */}
           </div>
         </div>
       )
