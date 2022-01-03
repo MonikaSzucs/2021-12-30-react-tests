@@ -6,6 +6,7 @@
   <script type="text/babel">
     function UsernameForm() {
       const [username, setUsername] = React.useState('')
+      // checks for uppercase
       const isLowerCase = username === username.toLowerCase()
       const error = isLowerCase ? null : 'Username must be lower case'
 
